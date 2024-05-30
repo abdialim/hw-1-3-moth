@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 1px solid black;
+            width: 400px;
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <input type="text" id="login" placeholder="Type your login"> Type your login <br>
+        <hr>
+        <br>
+        <input type="password" id="password" placeholder="Type your password"> Type your password <br>
+        <hr>
+        <br>
+        <input type="email" id="email" placeholder="Type your email"> Type your email <br>
+        <span id="emailError" class="error"></span>
+        <hr>
+        <br>
+        <button id="submitBtn">Submit</button>
+    </div>
+
+
+    <script>
+        function isValidEmail(email) {
+            const pattern = /^[^@]+@[^@]+\.[^@]+$/;
+            return pattern.test(email);
+
+        }
+
+        document.getElementById('submitBtn').addEventListener('click', function (event) {
+            const emailInput = document.getElementById("email")
+            const emailError = document.getElementById("emailError")
+            const email = emailInput.value
+
+            if (!isValidEmail(email)) {
+                emailError.textContent = "Не коректный формат почты";
+                event.preventDefault();
+            } else {
+                emailError.textContent = "";
+                alert("Вы успешно зарегстрировались !")
+                
+                
+            }
+
+        });
+
+    </script>
+   
+</body>
+
+</html>
